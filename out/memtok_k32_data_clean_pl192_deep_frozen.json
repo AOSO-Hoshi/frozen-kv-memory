@@ -1,0 +1,44 @@
+{
+ "args": {
+  "seg": 512,
+  "pred_len": 192,
+  "k": 32,
+  "k_curriculum": "",
+  "k_random": "16,128",
+  "steps": 20,
+  "ae_steps": 0,
+  "bs": 1,
+  "accum": 2,
+  "lr": 0.005,
+  "lora_lr": 0.0002,
+  "lora_r": 32,
+  "load_4bit": false,
+  "mem_depth": true,
+  "no_lora": true,
+  "lora_attn_only": false,
+  "chunks": 400,
+  "eval_n": 24,
+  "dtype": "bf16",
+  "seed": -1,
+  "model": "./qwen3-0.6b"
+ },
+ "log": [
+  {
+   "step": 0,
+   "upper": 3.5218893587589264,
+   "lower": 4.278338114420573,
+   "mem": 9.990534027417501,
+   "gap": 0.7564487556616468,
+   "recovery": -7.551332288200558
+  },
+  {
+   "step": 20,
+   "k": 32,
+   "upper": 3.5218893587589264,
+   "lower": 4.278338114420573,
+   "mem": 6.090163151423137,
+   "gap": 0.7564487556616468,
+   "recovery": -2.395172208879907
+  }
+ ]
+}

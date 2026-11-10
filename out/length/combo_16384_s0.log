@@ -1,0 +1,15 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 16251.12it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1033748 > 131072). Running this sequence through the model will result in indexing errors
+
+12 windows | 16384 tokens | budget 576 entries
+upper 2.8604  lower 4.1419  gap 1.2815 nats
+
+  condition                                CE   recovery
+  ------------------------------------------------------
+  64 slots only (last segment)         3.3365    +62.9%
+  H2O per head, 576 entries            3.5060    +49.6%
+  H2O per head, 512 + 64 slots         3.2366    +70.6%
+  SnapKV per head, 576 entries         3.6257    +40.3%
+  SnapKV per head, 512 + 64 slots      3.2397    +70.4%
+  oracle, 512 + 64 slots               3.2066    +73.0%
+  future attn per head, 512 + 64       2.7959   +105.0%

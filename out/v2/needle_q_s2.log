@@ -1,0 +1,46 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 9458.28it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1033748 > 131072). Running this sequence through the model will result in indexing errors
+
+10 samples x 5 depths | ctx=4096 | budget 576 entries (hybrid: 512 + 64)
+
+=== exact match by needle depth ===
+ depth        upper       lower    abstract   streaming         h2o      snapkv    snapkv_qsnapkv_q_slots    h2o_1set snapkv_1set     anchors      hybrid      oracle
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   0.1        100%          0%          0%          0%          0%          0%        100%        100%          0%          0%          0%          0%        100% 
+   0.3        100%          0%          0%          0%          0%          0%        100%         90%          0%          0%          0%          0%        100% 
+   0.5        100%          0%          0%          0%          0%          0%        100%        100%          0%          0%          0%          0%        100% 
+   0.7        100%          0%          0%          0%          0%         10%        100%         90%          0%          0%          0%          0%        100% 
+   0.9        100%          0%          0%        100%          0%         30%        100%        100%          0%         30%         70%         50%        100% 
+
+=== found any of the needle / fraction of it retrieved ===
+ depth        streaming             h2o          snapkv        snapkv_q        h2o_1set     snapkv_1set         anchors
+   0.1      0%/     0%    100%/    14%    100%/     2%    100%/    46%    100%/    22%     10%/     1%     10%/     1% 
+   0.3      0%/     0%    100%/    10%    100%/     5%    100%/    45%    100%/    14%     20%/     5%     40%/     3% 
+   0.5      0%/     0%    100%/     7%    100%/     4%    100%/    44%    100%/    15%      0%/     0%      0%/     0% 
+   0.7      0%/     0%    100%/     5%    100%/    12%    100%/    58%     90%/    15%      0%/     0%     40%/     4% 
+   0.9    100%/   100%    100%/     4%    100%/    36%    100%/    76%    100%/     7%    100%/    71%    100%/    78% 
+
+=== fraction retrieved: key phrase / digits ===
+ depth        streaming             h2o          snapkv        snapkv_q        h2o_1set     snapkv_1set         anchors
+   0.1      0%/     0%     18%/     3%      2%/     1%     48%/    41%     31%/     2%      1%/     0%      1%/     0% 
+   0.3      0%/     0%     14%/     2%      6%/     3%     48%/    39%     21%/     0%      7%/     0%      4%/     0% 
+   0.5      0%/     0%     10%/     2%      4%/     3%     46%/    37%     22%/     0%      0%/     0%      0%/     0% 
+   0.7      0%/     0%      7%/     2%     14%/     8%     62%/    50%     21%/     0%      0%/     0%      5%/     0% 
+   0.9    100%/   100%      5%/     2%     40%/    27%     79%/    68%     11%/     0%     85%/    40%     77%/    82% 
+
+=== overall (gap 2.521 nats, answer tokens only) ===
+  condition          CE   recovery     EM
+  ----------------------------------------
+  upper           0.011   +100.0%  100%
+  lower           2.531     +0.0%    0%
+  abstract        3.251    -28.6%    0%
+  streaming       2.137    +15.6%   20%
+  h2o             2.453     +3.1%    0%
+  snapkv          2.116    +16.5%    8%
+  snapkv_q        0.021    +99.6%  100%
+  snapkv_q_slots    0.134    +95.1%   96%
+  h2o_1set        2.702     -6.8%    0%
+  snapkv_1set     2.480     +2.0%    6%
+  anchors         2.147    +15.3%   14%
+  hybrid          2.251    +11.1%   10%
+  oracle          0.148    +94.5%  100%

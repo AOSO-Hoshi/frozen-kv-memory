@@ -2,6 +2,12 @@
 # contains credentials. Regenerate your own with data.py.
 data/
 
+# The scrubbed copy (scrub.py) has the credentials replaced, but it is still
+# real private conversation. Scrubbed is not the same as publishable: it exists
+# so that secrets do not leave the machine when a corpus must be uploaded to a
+# rented GPU, not so that the corpus can be published.
+data_clean/
+
 # Weights: model snapshots and trained checkpoints
 ckpt/
 qwen3-*/
@@ -13,3 +19,18 @@ out/cloud/
 
 __pycache__/
 .dtype_probe
+
+# LaTeX build artefacts (main.pdf is kept on purpose, so the paper can be read
+# without a TeX install)
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.toc
+paper/*.synctex.gz
+
+# Editor/backup copies and symlinks to local model snapshots
+*.bak
+*.v1bak
+qwen3-*

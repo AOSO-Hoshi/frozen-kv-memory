@@ -1,0 +1,18 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 14542.93it/s]
+24 windows | 8 hops | k=64 | 64:1 after the last hop
+
+=== was the answer available to copy from the context? ===
+  all          n= 12264  upper=3.038  lower=3.989  mem=3.375  gap=+0.951  recovery= +64.5%
+  seen         n=  9760  upper=2.401  lower=3.542  mem=2.879  gap=+1.141  recovery= +58.1%
+  novel        n=  2504  upper=5.518  lower=5.731  mem=5.310  gap=+0.213  recovery=+198.0%
+
+  79.6% of tokens had appeared before; they carry 76.0% of the total gap
+
+=== among copyable tokens, by how often they appeared ===
+  seen x1      n=  1176  upper=4.014  lower=5.190  mem=4.648  gap=+1.176  recovery= +46.1%
+  seen x2-5    n=  2378  upper=3.045  lower=4.539  mem=3.830  gap=+1.494  recovery= +47.4%
+  seen x6+     n=  6206  upper=1.849  lower=2.848  mem=2.179  gap=+0.999  recovery= +67.0%
+
+  a state that keeps the gist should do worst on tokens seen exactly once:
+  those are the specifics -- a name, a number -- that verbatim KV copies
+  and a summary has no way to hold.

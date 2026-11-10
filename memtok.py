@@ -113,6 +113,27 @@ def deep_prefix(model, mem: MemoryTokens, k: int):
             h.remove()
 
 
+def rope_q(model, q: torch.Tensor, pos: torch.Tensor) -> torch.Tensor:
+    """Rotate hand-computed queries [t, heads, hd] to their positions.
+
+    The cache stores keys already rotated (Qwen3 applies RoPE before
+    `past_key_values.update`), so a query must be rotated too before it is
+    dotted against them. v1 of the paper skipped this: every attention-based
+    selection policy, ours and the baselines alike, was scoring an unrotated
+    query against rotated keys, and its top-32 agreed with the model's real
+    attention on 1 position in 32. tests/test_attention_match.py pins this.
+    """
+    from transformers.models.qwen3.modeling_qwen3 import rotate_half
+    m = model
+    for _ in range(4):
+        if hasattr(m, "rotary_emb"):
+            break
+        m = getattr(m, "model", None) or getattr(m, "base_model", None)
+    cos, sin = m.rotary_emb(q, pos[None])            # [1, t, hd]
+    cos, sin = cos[0][:, None, :].to(q.dtype), sin[0][:, None, :].to(q.dtype)
+    return q * cos + rotate_half(q) * sin
+
+
 def compress(model, mem: MemoryTokens, ids: torch.Tensor,
              past=None, past_len: int = 0, grad: bool = True, k: int | None = None):
     """Run segment `ids` with memory tokens appended; return their KV.

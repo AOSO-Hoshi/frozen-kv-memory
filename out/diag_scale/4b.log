@@ -1,0 +1,18 @@
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:00<02:32,  2.60it/s]Loading weights:   1%|▏         | 5/398 [00:00<00:33, 11.84it/s]Loading weights:   4%|▍         | 16/398 [00:00<00:10, 36.19it/s]Loading weights:   7%|▋         | 27/398 [00:00<00:06, 53.81it/s]Loading weights:  11%|█         | 44/398 [00:00<00:04, 84.13it/s]Loading weights:  14%|█▍        | 55/398 [00:00<00:03, 91.22it/s]Loading weights:  17%|█▋        | 69/398 [00:01<00:03, 98.71it/s]Loading weights:  20%|██        | 80/398 [00:01<00:03, 98.53it/s]Loading weights:  23%|██▎       | 91/398 [00:01<00:03, 98.97it/s]Loading weights:  26%|██▌       | 103/398 [00:01<00:02, 100.21it/s]Loading weights:  29%|██▊       | 114/398 [00:01<00:02, 98.29it/s] Loading weights:  32%|███▏      | 126/398 [00:01<00:02, 98.49it/s]Loading weights:  35%|███▌      | 141/398 [00:01<00:02, 111.41it/s]Loading weights:  39%|███▊      | 154/398 [00:01<00:02, 113.02it/s]Loading weights:  42%|████▏     | 166/398 [00:01<00:02, 112.83it/s]Loading weights:  45%|████▍     | 179/398 [00:02<00:01, 109.79it/s]Loading weights:  48%|████▊     | 191/398 [00:02<00:01, 106.12it/s]Loading weights:  51%|█████     | 203/398 [00:02<00:01, 105.05it/s]Loading weights:  54%|█████▍    | 214/398 [00:02<00:01, 103.27it/s]Loading weights:  57%|█████▋    | 225/398 [00:02<00:01, 101.83it/s]Loading weights:  59%|█████▉    | 236/398 [00:02<00:01, 101.26it/s]Loading weights:  62%|██████▏   | 247/398 [00:02<00:01, 95.37it/s] Loading weights:  65%|██████▍   | 258/398 [00:02<00:01, 99.23it/s]Loading weights:  68%|██████▊   | 269/398 [00:03<00:01, 95.72it/s]Loading weights:  70%|███████   | 280/398 [00:03<00:01, 95.68it/s]Loading weights:  75%|███████▍  | 297/398 [00:03<00:00, 114.69it/s]Loading weights:  78%|███████▊  | 311/398 [00:03<00:00, 120.38it/s]Loading weights:  81%|████████▏ | 324/398 [00:03<00:00, 106.55it/s]Loading weights:  85%|████████▌ | 339/398 [00:03<00:00, 115.01it/s]Loading weights:  88%|████████▊ | 351/398 [00:03<00:00, 107.31it/s]Loading weights:  91%|█████████ | 363/398 [00:03<00:00, 102.52it/s]Loading weights:  95%|█████████▍| 377/398 [00:03<00:00, 106.84it/s]Loading weights:  98%|█████████▊| 389/398 [00:04<00:00, 109.95it/s]Loading weights: 100%|██████████| 398/398 [00:04<00:00, 96.22it/s] 
+24 windows | 8 hops | k=64 | 64:1 after the last hop
+
+=== was the answer available to copy from the context? ===
+  all          n= 12264  upper=2.570  lower=3.579  mem=2.845  gap=+1.009  recovery= +72.7%
+  seen         n=  9760  upper=1.997  lower=3.163  mem=2.409  gap=+1.167  recovery= +64.7%
+  novel        n=  2504  upper=4.804  lower=5.198  mem=4.547  gap=+0.394  recovery=+165.2%
+
+  79.6% of tokens had appeared before; they carry 73.2% of the total gap
+
+=== among copyable tokens, by how often they appeared ===
+  seen x1      n=  1176  upper=3.305  lower=4.566  mem=3.852  gap=+1.261  recovery= +56.6%
+  seen x2-5    n=  2378  upper=2.548  lower=4.041  mem=3.193  gap=+1.493  recovery= +56.7%
+  seen x6+     n=  6206  upper=1.537  lower=2.562  mem=1.835  gap=+1.024  recovery= +71.0%
+
+  a state that keeps the gist should do worst on tokens seen exactly once:
+  those are the specifics -- a name, a number -- that verbatim KV copies
+  and a summary has no way to hold.

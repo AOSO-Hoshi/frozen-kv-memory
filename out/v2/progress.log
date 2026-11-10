@@ -1,0 +1,32 @@
+ok   needle_b1_s0.log 322s
+ok   baseline_b1_s0.log 56s
+ok   needle_b1_s1.log 317s
+ok   baseline_b1_s1.log 56s
+ok   needle_b1_s2.log 315s
+ok   baseline_b1_s2.log 56s
+ok   hyb_s0.log 219s
+ok   hyb_s1.log 220s
+ok   hyb_s2.log 219s
+ok   needle_b8_s0.log 318s
+ok   baseline_b8_s0.log 56s
+ok   needle_b8_s1.log 319s
+ok   baseline_b8_s1.log 55s
+ok   needle_b8_s2.log 317s
+ok   baseline_b8_s2.log 56s
+ALL_DONE
+ok   combo_s0.log 62s
+ok   combo_s1.log 62s
+ok   combo_s2.log 62s
+COMBO_DONE
+ok   levers_v1_a512.log 128s
+ok   levers_a512_s0.log 116s
+ok   levers_a512_s1.log 116s
+ok   levers_a512_s2.log 116s
+ok   levers_a1024_s0.log 119s
+ok   levers_a1024_s1.log 118s
+ok   levers_a1024_s2.log 119s
+LEVERS_DONE
+ok   needle_q_s0.log 365s
+ok   needle_q_s1.log 365s
+ok   needle_q_s2.log 367s
+NEEDLEQ_DONE

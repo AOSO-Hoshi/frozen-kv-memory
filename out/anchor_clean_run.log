@@ -1,0 +1,13 @@
+=== train 06b clean s0  11:12:45 ===
+[1000] k= 32 up=3.522 low=4.278 mem=3.6178 gap=0.756 recovery=+87.3% | k16:+32% k32:+87% k72:+94% k128:+95% | 503s
+=== train 06b clean s1  11:21:21 ===
+[1000] k= 32 up=3.522 low=4.278 mem=3.6416 gap=0.756 recovery=+84.2% | k16:+71% k32:+84% k72:+91% k128:+91% | 503s
+=== hybrid 06b clean s0  11:29:56 ===
+    ^ same anchors, state=LAST SEG only   3.2774    +82.6%
+    ^ same anchors, NO state   3.5912    +50.4%
+    ^ ORACLE, state=LAST SEG only   3.1415    +96.5%
+=== hybrid 06b clean s1  11:31:51 ===
+    ^ same anchors, state=LAST SEG only   3.2888    +81.4%
+    ^ same anchors, NO state   3.5995    +49.6%
+    ^ ORACLE, state=LAST SEG only   3.1247    +98.2%
+=== done 11:33:46 ===

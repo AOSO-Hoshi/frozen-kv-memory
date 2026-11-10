@@ -1,0 +1,6 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:  66%|██████▌   | 204/311 [00:00<00:00, 1990.76it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 2183.38it/s]
+max|diff| 0.00e+00  top-32 overlap 32/32
+layer  0 max|diff| 0.00e+00
+layer 14 max|diff| 0.00e+00
+layer 27 max|diff| 0.00e+00
+ok

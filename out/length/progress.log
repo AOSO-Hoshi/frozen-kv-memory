@@ -1,0 +1,10 @@
+ok   combo_8192_s0 199s
+FAIL combo_16384_s0
+LENGTH_DONE
+ok   combo_16384_s0 707s
+LEN16K_DONE
+ok   future_4096 70s
+ok   future_8192 214s
+FAIL future_16384
+FUTURE_DONE
+ok   future_16384 749s

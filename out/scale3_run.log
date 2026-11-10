@@ -1,0 +1,11 @@
+=== 06b_bf16  08:31:44 ===
+[1000] k= 32 up=3.526 low=4.294 mem=3.6452 gap=0.768 recovery=+84.5% | k16:+70% k32:+84% k72:+92% k128:+91% | 499s
+=== 06b_nf4  08:40:16 ===
+[1000] k= 32 up=3.647 low=4.405 mem=3.7322 gap=0.758 recovery=+88.7% | k16:-48% k32:+89% k72:+95% k128:+96% | 562s
+=== 17b_bf16  08:49:51 ===
+[1000] k= 32 up=3.238 low=4.055 mem=3.3088 gap=0.817 recovery=+91.3% | k16:+83% k32:+91% k72:+95% k128:+95% | 1079s
+=== checkpoints written ===
+-rw-rw-r--  1 hoshi hoshi  29362357  9月 22 09:08 memtok_1.7b_k32_pl192_deep_frozen.pt
+-rw-rw-r--  1 hoshi hoshi  14682253  9月 22 08:40 memtok_k32_pl192_deep_frozen.pt
+-rw-rw-r--  1 hoshi hoshi  14682285  9月 22 08:49 memtok_k32_pl192_deep_nf4_frozen.pt
+=== done 09:08:07 ===

@@ -1,0 +1,15 @@
+=== train 1.7b seed1 10:33:16 ===
+[1000] k= 32 up=3.238 low=4.055 mem=3.3463 gap=0.817 recovery=+86.7% | k16:+80% k32:+87% k72:+92% k128:+92% | 1083s
+-rw-rw-r-- 1 hoshi hoshi 29362381  9月 22 10:51 ckpt/memtok_1.7b_k32_s1_pl192_deep_frozen.pt
+=== diagnose 10:51:38 ===
+  all          n= 12264  upper=2.732  lower=3.705  mem=3.983  gap=+0.974  recovery= -28.5%
+  seen         n=  9760  upper=2.139  lower=3.273  mem=3.413  gap=+1.134  recovery= -12.3%
+  novel        n=  2504  upper=5.040  lower=5.390  mem=6.205  gap=+0.350  recovery=-232.8%
+  seen x1      n=  1176  upper=3.553  lower=4.740  mem=5.398  gap=+1.187  recovery= -55.4%
+  seen x2-5    n=  2378  upper=2.757  lower=4.226  mem=4.563  gap=+1.468  recovery= -23.0%
+  seen x6+     n=  6206  upper=1.635  lower=2.630  mem=2.597  gap=+0.996  recovery=  +3.4%
+=== hybrid 10:52:35 ===
+    ^ same anchors, state=LAST SEG only   2.9353    +87.9%
+    ^ same anchors, NO state   3.2833    +51.7%
+    ^ ORACLE, state=LAST SEG only   2.7621   +106.0%
+=== done 10:56:21 ===

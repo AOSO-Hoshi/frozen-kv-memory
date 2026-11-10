@@ -44,7 +44,12 @@ HERE = Path(__file__).resolve().parent
 
 
 def score_states(model, cfg, states, query):
-    """Attention from the query onto each state's keys; one score per state."""
+    """Attention from the query onto each state's keys; one score per state.
+
+    NOTE (2026-09-23): this has the v1 scoring bug -- the query is not rotated
+    (see memtok.rope_q) while the cached keys are. Its README result has not
+    been rerun and should not be cited.
+    """
     dev = query.device
     base = getattr(model, "model", model)
     h = base(input_ids=query, output_hidden_states=True).hidden_states[-2][0]

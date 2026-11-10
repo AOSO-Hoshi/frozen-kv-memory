@@ -1,0 +1,62 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 8065.62it/s]
+12 windows | 8 hops over 4096 tokens
+budget 576 = 512 anchors + 64 abstract (7:1)
+
+upper (all 4096 KV) CE=3.1064
+lower (nothing)      CE=4.0839   gap=0.9775 nats
+anchors actually placed: 512.0 of 512 requested
+
+  anchor overlap with the oracle's choice: 14.9%
+
+  condition                        CE   recovery
+  ----------------------------------------------
+  576 abstract (compact pos)   3.5442    +55.2%
+  576 abstract (accum pos)     3.4998    +59.8%
+  512 anchors only             3.8801    +20.9%
+  512 anchors + 64 abstract    3.4223    +67.7%
+  512 QUERY + 64 abstract      3.3174    +78.4%
+  512 QUERY re-retrieved/0     0.0000   +417.8%
+  512 SURPRISAL + 64 abstract   3.3202    +78.1%
+  SURPRISAL512->QUERY512 + 64   3.3202    +78.1%
+  SPECULATIVE r1 1x16 + 64     3.3166    +78.5%
+    ^ same anchors, state=LAST SEG only   3.2869    +81.5%
+    ^ same anchors, NO state   3.6311    +46.3%
+    ^ same anchors, RANDOM state   4.6434    -57.2%
+  512 ORACLE anchors only      3.4728    +62.5%
+  512 ORACLE + 64 abstract     3.1468    +95.9%
+    ^ ORACLE, state=LAST SEG only   3.1271    +97.9%
+
+=== split by topic spread ===
+  single-topic  spread=0.040 gap=0.958  abstract +64.4%  surprisal +78.6%  specul +78.7%  oracle +98.8%
+  multi-topic   spread=0.046 gap=0.998  abstract +55.3%  surprisal +77.7%  specul +78.3%  oracle +93.0%
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 6490.24it/s]
+12 windows | 8 hops over 4096 tokens
+budget 576 = 512 anchors + 64 abstract (7:1)
+
+upper (all 4096 KV) CE=3.1064
+lower (nothing)      CE=4.0839   gap=0.9775 nats
+anchors actually placed: 512.0 of 512 requested
+
+  anchor overlap with the oracle's choice: 14.9%
+
+  condition                        CE   recovery
+  ----------------------------------------------
+  576 abstract (compact pos)   3.5442    +55.2%
+  576 abstract (accum pos)     3.4998    +59.8%
+  512 anchors only             3.8801    +20.9%
+  512 anchors + 64 abstract    3.4223    +67.7%
+  512 QUERY + 64 abstract      3.3174    +78.4%
+  512 QUERY re-retrieved/0     0.0000   +417.8%
+  512 SURPRISAL + 64 abstract   3.3202    +78.1%
+  SURPRISAL512->QUERY512 + 64   3.3202    +78.1%
+  SPECULATIVE r1 1x16 + 64     3.3166    +78.5%
+    ^ same anchors, state=LAST SEG only   3.2869    +81.5%
+    ^ same anchors, NO state   3.6311    +46.3%
+    ^ same anchors, RANDOM state   4.7160    -64.7%
+  512 ORACLE anchors only      3.4728    +62.5%
+  512 ORACLE + 64 abstract     3.1468    +95.9%
+    ^ ORACLE, state=LAST SEG only   3.1271    +97.9%
+
+=== split by topic spread ===
+  single-topic  spread=0.040 gap=0.958  abstract +64.4%  surprisal +78.6%  specul +78.7%  oracle +98.8%
+  multi-topic   spread=0.046 gap=0.998  abstract +55.3%  surprisal +77.7%  specul +78.3%  oracle +93.0%

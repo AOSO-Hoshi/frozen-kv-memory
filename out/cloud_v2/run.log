@@ -1,0 +1,120 @@
+  torch          2.8.0+cu128
+  transformers   5.15.1
+  modelscope     1.40.1
+  NVIDIA GeForce RTX 4090 47 GiB bf16
+ok
+ok   hyb_qwen3-0.6b 51s
+ok   base_qwen3-0.6b 21s
+ok   combo_qwen3-0.6b 20s
+ok   hyb_qwen3-1.7b 61s
+ok   base_qwen3-1.7b 25s
+ok   combo_qwen3-1.7b 23s
+ok   hyb_qwen3-4b 110s
+ok   base_qwen3-4b 49s
+ok   combo_qwen3-4b 47s
+ok   hyb_qwen3-8b 166s
+ok   base_qwen3-8b 64s
+ok   combo_qwen3-8b 56s
+ok   hyb_qwen3-8b_lr2e-3
+ok   hyb_qwen3-14b 290s
+ok   base_qwen3-14b 102s
+ok   combo_qwen3-14b 88s
+=== summary ===
+./out/cloud_v2/hyb_qwen3-0.6b.log:  576 abstract (compact pos)   3.5442    +55.2%
+./out/cloud_v2/hyb_qwen3-0.6b.log:  512 anchors only             3.8801    +20.9%
+./out/cloud_v2/hyb_qwen3-0.6b.log:    ^ same anchors, state=LAST SEG only   3.2869    +81.5%
+./out/cloud_v2/hyb_qwen3-0.6b.log:    ^ same anchors, NO state   3.6311    +46.3%
+./out/cloud_v2/hyb_qwen3-0.6b.log:  512 ORACLE anchors only      3.4728    +62.5%
+./out/cloud_v2/hyb_qwen3-0.6b.log:    ^ ORACLE, state=LAST SEG only   3.1271    +97.9%
+./out/cloud_v2/hyb_qwen3-0.6b.log:  576 abstract (compact pos)   3.5442    +55.2%
+./out/cloud_v2/hyb_qwen3-0.6b.log:  512 anchors only             3.8801    +20.9%
+./out/cloud_v2/hyb_qwen3-0.6b.log:    ^ same anchors, state=LAST SEG only   3.2869    +81.5%
+./out/cloud_v2/hyb_qwen3-0.6b.log:    ^ same anchors, NO state   3.6311    +46.3%
+./out/cloud_v2/hyb_qwen3-0.6b.log:  512 ORACLE anchors only      3.4728    +62.5%
+./out/cloud_v2/hyb_qwen3-0.6b.log:    ^ ORACLE, state=LAST SEG only   3.1271    +97.9%
+./out/cloud_v2/hyb_qwen3-1.7b.log:  576 abstract (compact pos)   3.2609    +54.0%
+./out/cloud_v2/hyb_qwen3-1.7b.log:  512 anchors only             3.5209    +26.9%
+./out/cloud_v2/hyb_qwen3-1.7b.log:    ^ same anchors, state=LAST SEG only   2.9155    +89.9%
+./out/cloud_v2/hyb_qwen3-1.7b.log:    ^ same anchors, NO state   3.2887    +51.1%
+./out/cloud_v2/hyb_qwen3-1.7b.log:  512 ORACLE anchors only      3.1565    +64.8%
+./out/cloud_v2/hyb_qwen3-1.7b.log:    ^ ORACLE, state=LAST SEG only   2.7524   +106.8%
+./out/cloud_v2/hyb_qwen3-1.7b.log:  576 abstract (compact pos)   3.2609    +54.0%
+./out/cloud_v2/hyb_qwen3-1.7b.log:  512 anchors only             3.5209    +26.9%
+./out/cloud_v2/hyb_qwen3-1.7b.log:    ^ same anchors, state=LAST SEG only   2.9155    +89.9%
+./out/cloud_v2/hyb_qwen3-1.7b.log:    ^ same anchors, NO state   3.2887    +51.1%
+./out/cloud_v2/hyb_qwen3-1.7b.log:  512 ORACLE anchors only      3.1565    +64.8%
+./out/cloud_v2/hyb_qwen3-1.7b.log:    ^ ORACLE, state=LAST SEG only   2.7524   +106.8%
+./out/cloud_v2/hyb_qwen3-14b.log:  576 abstract (compact pos)   2.6558    +54.5%
+./out/cloud_v2/hyb_qwen3-14b.log:  512 anchors only             2.9047    +30.2%
+./out/cloud_v2/hyb_qwen3-14b.log:    ^ same anchors, state=LAST SEG only   2.3676    +82.6%
+./out/cloud_v2/hyb_qwen3-14b.log:    ^ same anchors, NO state   2.5705    +62.8%
+./out/cloud_v2/hyb_qwen3-14b.log:  512 ORACLE anchors only      2.5343    +66.3%
+./out/cloud_v2/hyb_qwen3-14b.log:    ^ ORACLE, state=LAST SEG only   2.2501    +94.0%
+./out/cloud_v2/hyb_qwen3-14b.log:  576 abstract (compact pos)   2.6558    +54.5%
+./out/cloud_v2/hyb_qwen3-14b.log:  512 anchors only             2.9047    +30.2%
+./out/cloud_v2/hyb_qwen3-14b.log:    ^ same anchors, state=LAST SEG only   2.3676    +82.6%
+./out/cloud_v2/hyb_qwen3-14b.log:    ^ same anchors, NO state   2.5705    +62.8%
+./out/cloud_v2/hyb_qwen3-14b.log:  512 ORACLE anchors only      2.5343    +66.3%
+./out/cloud_v2/hyb_qwen3-14b.log:    ^ ORACLE, state=LAST SEG only   2.2501    +94.0%
+./out/cloud_v2/hyb_qwen3-4b.log:  576 abstract (compact pos)   2.9749    +60.6%
+./out/cloud_v2/hyb_qwen3-4b.log:  512 anchors only             3.3123    +26.1%
+./out/cloud_v2/hyb_qwen3-4b.log:    ^ same anchors, state=LAST SEG only   2.6708    +91.6%
+./out/cloud_v2/hyb_qwen3-4b.log:    ^ same anchors, NO state   3.0202    +55.9%
+./out/cloud_v2/hyb_qwen3-4b.log:  512 ORACLE anchors only      2.9405    +64.1%
+./out/cloud_v2/hyb_qwen3-4b.log:    ^ ORACLE, state=LAST SEG only   2.5391   +105.1%
+./out/cloud_v2/hyb_qwen3-4b.log:  576 abstract (compact pos)   2.9749    +60.6%
+./out/cloud_v2/hyb_qwen3-4b.log:  512 anchors only             3.3123    +26.1%
+./out/cloud_v2/hyb_qwen3-4b.log:    ^ same anchors, state=LAST SEG only   2.6708    +91.6%
+./out/cloud_v2/hyb_qwen3-4b.log:    ^ same anchors, NO state   3.0202    +55.9%
+./out/cloud_v2/hyb_qwen3-4b.log:  512 ORACLE anchors only      2.9405    +64.1%
+./out/cloud_v2/hyb_qwen3-4b.log:    ^ ORACLE, state=LAST SEG only   2.5391   +105.1%
+./out/cloud_v2/hyb_qwen3-8b.log:  576 abstract (compact pos)   2.7740    +59.6%
+./out/cloud_v2/hyb_qwen3-8b.log:  512 anchors only             3.0913    +26.9%
+./out/cloud_v2/hyb_qwen3-8b.log:    ^ same anchors, state=LAST SEG only   2.4945    +88.5%
+./out/cloud_v2/hyb_qwen3-8b.log:    ^ same anchors, NO state   2.7710    +60.0%
+./out/cloud_v2/hyb_qwen3-8b.log:  512 ORACLE anchors only      2.7059    +66.7%
+./out/cloud_v2/hyb_qwen3-8b.log:    ^ ORACLE, state=LAST SEG only   2.4029    +98.0%
+./out/cloud_v2/hyb_qwen3-8b.log:  576 abstract (compact pos)   2.7740    +59.6%
+./out/cloud_v2/hyb_qwen3-8b.log:  512 anchors only             3.0913    +26.9%
+./out/cloud_v2/hyb_qwen3-8b.log:    ^ same anchors, state=LAST SEG only   2.4945    +88.5%
+./out/cloud_v2/hyb_qwen3-8b.log:    ^ same anchors, NO state   2.7710    +60.0%
+./out/cloud_v2/hyb_qwen3-8b.log:  512 ORACLE anchors only      2.7059    +66.7%
+./out/cloud_v2/hyb_qwen3-8b.log:    ^ ORACLE, state=LAST SEG only   2.4029    +98.0%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:  576 abstract (compact pos)   2.7806    +59.0%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:  512 anchors only             3.0913    +26.9%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:    ^ same anchors, state=LAST SEG only   2.5298    +84.9%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:    ^ same anchors, NO state   2.8231    +54.6%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:  512 ORACLE anchors only      2.7059    +66.7%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:    ^ ORACLE, state=LAST SEG only   2.4025    +98.0%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:  576 abstract (compact pos)   2.7806    +59.0%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:  512 anchors only             3.0913    +26.9%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:    ^ same anchors, state=LAST SEG only   2.5298    +84.9%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:    ^ same anchors, NO state   2.8231    +54.6%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:  512 ORACLE anchors only      2.7059    +66.7%
+./out/cloud_v2/hyb_qwen3-8b_lr2e-3.log:    ^ ORACLE, state=LAST SEG only   2.4025    +98.0%
+./out/cloud_v2/base_qwen3-0.6b.log:  H2O (per head)             3.3230    +77.8%      2.0/4
+./out/cloud_v2/base_qwen3-0.6b.log:  ours (spec + slots)        3.3145    +78.7%      4.0/4
+./out/cloud_v2/base_qwen3-1.7b.log:  H2O (per head)             3.0091    +80.2%      2.1/4
+./out/cloud_v2/base_qwen3-1.7b.log:  ours (spec + slots)        2.9168    +89.8%      4.0/4
+./out/cloud_v2/base_qwen3-14b.log:  H2O (per head)             2.3786    +81.5%      2.2/4
+./out/cloud_v2/base_qwen3-14b.log:  ours (spec + slots)        2.3763    +81.7%      4.0/4
+./out/cloud_v2/base_qwen3-4b.log:  H2O (per head)             2.7775    +80.7%      2.2/4
+./out/cloud_v2/base_qwen3-4b.log:  ours (spec + slots)        2.6839    +90.3%      4.0/4
+./out/cloud_v2/base_qwen3-8b.log:  H2O (per head)             2.5709    +80.6%      2.2/4
+./out/cloud_v2/base_qwen3-8b.log:  ours (spec + slots)        2.4952    +88.4%      4.0/4
+./out/cloud_v2/combo_qwen3-0.6b.log:  64 slots only (last segment)         3.4233    +67.5%
+./out/cloud_v2/combo_qwen3-0.6b.log:  H2O per head, 512 + 64 slots         3.1429    +96.3%
+./out/cloud_v2/combo_qwen3-0.6b.log:  SnapKV per head, 512 + 64 slots      3.2660    +83.6%
+./out/cloud_v2/combo_qwen3-1.7b.log:  64 slots only (last segment)         3.0901    +71.7%
+./out/cloud_v2/combo_qwen3-1.7b.log:  H2O per head, 512 + 64 slots         2.7895   +103.0%
+./out/cloud_v2/combo_qwen3-1.7b.log:  SnapKV per head, 512 + 64 slots      2.8998    +91.5%
+./out/cloud_v2/combo_qwen3-14b.log:  64 slots only (last segment)         2.5811    +61.7%
+./out/cloud_v2/combo_qwen3-14b.log:  H2O per head, 512 + 64 slots         2.2505    +94.0%
+./out/cloud_v2/combo_qwen3-14b.log:  SnapKV per head, 512 + 64 slots      2.3489    +84.4%
+./out/cloud_v2/combo_qwen3-4b.log:  64 slots only (last segment)         2.8441    +73.9%
+./out/cloud_v2/combo_qwen3-4b.log:  H2O per head, 512 + 64 slots         2.5493   +104.1%
+./out/cloud_v2/combo_qwen3-4b.log:  SnapKV per head, 512 + 64 slots      2.6758    +91.1%
+./out/cloud_v2/combo_qwen3-8b.log:  64 slots only (last segment)         2.6960    +67.7%
+./out/cloud_v2/combo_qwen3-8b.log:  H2O per head, 512 + 64 slots         2.4028    +98.0%
+./out/cloud_v2/combo_qwen3-8b.log:  SnapKV per head, 512 + 64 slots      2.5030    +87.6%
+=== done 15:04:08 -- download out/cloud_v2, then RELEASE the instance ===

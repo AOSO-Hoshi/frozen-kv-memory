@@ -1,0 +1,12 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 13275.95it/s]
+
+12 windows | 4096 tokens | budget 576 entries (ours: 512 verbatim + 64 learned)
+upper 3.1076  lower 4.0817  gap 0.9741 nats
+
+  policy                         CE   recovery  sink kept
+  --------------------------------------------------------
+  StreamingLLM               3.5385    +55.8%      4.0/4
+  H2O                        3.6116    +48.3%      2.2/4
+  SnapKV                     3.5531    +54.3%      4.0/4
+  ours (spec + slots)        3.2174    +88.7%      4.0/4
+  ours, oracle anchors       3.0753   +103.3%          -

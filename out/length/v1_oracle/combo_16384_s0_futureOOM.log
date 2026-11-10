@@ -1,0 +1,18 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 11741.45it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1033748 > 131072). Running this sequence through the model will result in indexing errors
+Traceback (most recent call last):
+  File "/home/hoshi/Claude/memzip/combo_cmp.py", line 125, in <module>
+    main()
+  File "/home/hoshi/Claude/memzip/combo_cmp.py", line 101, in main
+    fsel = gather_heads(full, future_heads(model, cfg, full, ctx, tail, args.anchors))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hoshi/Claude/memzip/baseline_cmp.py", line 247, in future_heads
+    score = _to_kv_heads(_attn_rows(q, k[0], qpos, hd).sum(1), k.shape[1])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hoshi/Claude/memzip/baseline_cmp.py", line 168, in _attn_rows
+    a = torch.einsum("thd,hcd->htc", q.float(), kk) / hd ** 0.5
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hoshi/ctfenv/lib/python3.12/site-packages/torch/functional.py", line 373, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 7.65 GiB of which 390.00 MiB is free. Including non-PyTorch memory, this process has 7.25 GiB memory in use. Of the allocated memory 4.46 GiB is allocated by PyTorch, and 2.66 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)

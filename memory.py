@@ -40,7 +40,7 @@ from pathlib import Path
 
 import torch
 
-from memtok import MemoryTokens, compress, _layers
+from memtok import MemoryTokens, compress, _layers, rope_q
 
 
 @torch.no_grad()
@@ -160,7 +160,11 @@ class HybridMemory:
         """Attention from the query over the cold keys, one score per position."""
         dev = query.device
         base = getattr(self.model, "model", self.model)
-        h = base(input_ids=query, output_hidden_states=True).hidden_states[-2][0]
+        # the draft was generated at these positions (see _imagine)
+        pos = torch.arange(handle.length + self.k,
+                           handle.length + self.k + query.shape[1], device=dev)
+        h = base(input_ids=query, position_ids=pos.unsqueeze(0),
+                 output_hidden_states=True).hidden_states[-2][0]
         layer = _layers(self.model)[-1]
         attn = layer.self_attn
         q = attn.q_proj(layer.input_layernorm(h))
@@ -169,6 +173,7 @@ class HybridMemory:
         q = q.view(-1, self.cfg.num_attention_heads, hd)
         if hasattr(attn, "q_norm"):
             q = attn.q_norm(q)
+        q = rope_q(self.model, q, pos)                 # cached keys are rotated
         k = handle.kv[-1][0][0].to(dev)
         k = k.repeat_interleave(self.cfg.num_attention_heads // k.shape[0], dim=0)
         return torch.einsum("thd,hcd->c", q.float(), k.float()) / (len(q) * hd ** 0.5)

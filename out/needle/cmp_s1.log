@@ -1,0 +1,34 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 13119.59it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1033748 > 131072). Running this sequence through the model will result in indexing errors
+
+10 samples x 5 depths | ctx=4096 | budget 576 entries (hybrid: 512 + 64)
+
+=== exact match by needle depth ===
+ depth        upper       lower    abstract   streaming         h2o      snapkv     anchors      hybrid      oracle
+  ------------------------------------------------------------------------------------------------------------------
+   0.1        100%          0%          0%          0%          0%          0%          0%          0%        100% 
+   0.3        100%          0%          0%          0%         50%         10%         30%         20%        100% 
+   0.5        100%          0%          0%          0%          0%          0%          0%          0%        100% 
+   0.7        100%          0%          0%          0%          0%          0%          0%          0%        100% 
+   0.9        100%          0%          0%        100%          0%         90%          0%          0%        100% 
+
+=== did the policy page in the needle at all ===
+ depth    streaming         h2o      snapkv     anchors
+   0.1          0%          0%          0%          0% 
+   0.3          0%        100%        100%        100% 
+   0.5          0%          0%          0%          0% 
+   0.7          0%          0%          0%          0% 
+   0.9        100%         10%        100%        100% 
+
+=== overall (gap 2.517 nats, answer tokens only) ===
+  condition          CE   recovery     EM
+  ----------------------------------------
+  upper           0.009   +100.0%  100%
+  lower           2.526     +0.0%    0%
+  abstract        3.150    -24.8%    0%
+  streaming       2.130    +15.7%   20%
+  h2o             2.281     +9.8%   10%
+  snapkv          1.808    +28.5%   20%
+  anchors         2.143    +15.2%    6%
+  hybrid          2.089    +17.4%    4%
+  oracle          0.066    +97.7%  100%

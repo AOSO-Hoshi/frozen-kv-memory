@@ -28,8 +28,11 @@ import time
 from pathlib import Path
 
 import torch
-from peft import LoraConfig, get_peft_model
 from transformers import AutoModelForCausalLM, AutoTokenizer
+# peft is imported where LoRA is actually built. The frozen-backbone path is the
+# only one used for every result now, and it does not need peft at all -- a
+# top-level import would make it a hard dependency on machines that never use
+# it, which matters on a rented box where a missing package costs billed time.
 
 from memtok import MemoryTokens, compress
 from train import load_chunks, seg_b_loss
@@ -119,6 +122,7 @@ def main() -> None:
     for p in model.parameters():
         p.requires_grad_(False)
     if not args.no_lora:
+        from peft import LoraConfig, get_peft_model
         model = get_peft_model(model, LoraConfig(
             r=args.lora_r, lora_alpha=2 * args.lora_r, lora_dropout=0.0,
             target_modules=(["q_proj", "k_proj", "v_proj", "o_proj"] if args.lora_attn_only
@@ -305,9 +309,17 @@ def main() -> None:
     # domains sharing a name silently destroyed a trained checkpoint once.
     import os
     _dom = os.environ.get("MEMZIP_DATA", "data")
-    tag = f"k{args.k}" + ("" if _dom == "data" else f"_{_dom}")
+    # Same lesson as MEMZIP_DATA above, two more axes: the backbone and the
+    # prediction length also change what is being trained, so they have to reach
+    # the filename or a cross-scale run overwrites the previous one. Only
+    # non-default values are appended, so existing checkpoint names are
+    # unchanged and scripts referring to them still resolve.
+    _mdl = Path(args.model).name.replace("qwen3-", "").replace("Qwen3-", "")
+    tag = ("" if _mdl in ("0.6b", "0.6B") else f"{_mdl}_") + f"k{args.k}"
+    tag += "" if _dom == "data" else f"_{_dom}"
     tag += "" if args.seed < 0 else f"_s{args.seed}"
     tag += f"_curr{k_start}-{k_end}" if args.k_curriculum else ""
+    tag += f"_pl{args.pred_len}" if args.pred_len else ""
     if args.mem_depth:
         tag += "_deep"
     if args.load_4bit:

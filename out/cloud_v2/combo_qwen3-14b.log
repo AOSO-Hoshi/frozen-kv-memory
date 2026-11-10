@@ -1,0 +1,12 @@
+Loading weights:   0%|          | 0/443 [00:00<?, ?it/s]Loading weights: 100%|██████████| 443/443 [00:00<00:00, 6736.63it/s]
+
+12 windows | 4096 tokens | budget 576 entries
+upper 2.1886  lower 3.2135  gap 1.0249 nats
+
+  condition                                CE   recovery
+  ------------------------------------------------------
+  64 slots only (last segment)         2.5811    +61.7%
+  H2O per head, 576 entries            2.3786    +81.5%
+  H2O per head, 512 + 64 slots         2.2505    +94.0%
+  SnapKV per head, 576 entries         2.5497    +64.8%
+  SnapKV per head, 512 + 64 slots      2.3489    +84.4%

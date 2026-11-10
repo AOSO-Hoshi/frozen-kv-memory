@@ -1,0 +1,22 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 10458.77it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1033748 > 131072). Running this sequence through the model will result in indexing errors
+
+10 samples x 5 depths | ctx=4096 | 512 anchors + 64 slots
+
+ depth                upper               lower            abstract             anchors              hybrid              oracle
+  ------------------------------------------------------------------------------------------------------------------------------
+   0.1     0.008/     100%    2.513/       0%    3.268/       0%    2.732/       0%    2.703/       0%    0.051/     100%   [retrieval found the needle: 0%]
+   0.3     0.013/     100%    2.582/       0%    3.333/       0%    1.335/      10%    1.640/       0%    0.096/     100%   [retrieval found the needle: 100%]
+   0.5     0.014/     100%    2.528/       0%    3.186/       0%    2.654/       0%    2.717/       0%    0.202/     100%   [retrieval found the needle: 0%]
+   0.7     0.011/     100%    2.414/       0%    3.345/       0%    2.483/       0%    2.631/       0%    0.195/     100%   [retrieval found the needle: 0%]
+   0.9     0.007/     100%    2.620/       0%    3.124/       0%    1.639/       0%    1.513/       0%    0.198/     100%   [retrieval found the needle: 100%]
+
+  mean     0.011/     100%    2.531/       0%    3.251/       0%    2.169/       2%    2.241/       0%    0.148/     100%
+
+gap = 2.521 nats   (CE recovery, answer tokens only)
+  upper      +100.0%   EM 100%
+  lower        +0.0%   EM 0%
+  abstract    -28.6%   EM 0%
+  anchors     +14.4%   EM 2%
+  hybrid      +11.5%   EM 0%
+  oracle      +94.5%   EM 100%

@@ -1,0 +1,21 @@
+=== 06b_bf16  09:36:56 ===
+    ^ same anchors, state=LAST SEG only   3.2591    +84.5%
+    ^ same anchors, NO state   3.5760    +52.0%
+  512 ORACLE + 64 abstract     3.1310    +97.6%
+    ^ ORACLE, state=LAST SEG only   3.1211    +98.6%
+=== 06b_nf4  09:38:50 ===
+    ^ same anchors, state=LAST SEG only   3.3754    +85.7%
+    ^ same anchors, NO state   3.7006    +50.8%
+  512 ORACLE + 64 abstract     3.2366   +100.6%
+    ^ ORACLE, state=LAST SEG only   3.2176   +102.7%
+=== 17b_bf16  09:40:52 ===
+    ^ same anchors, state=LAST SEG only   2.9300    +88.5%
+    ^ same anchors, NO state   3.2935    +50.6%
+  512 ORACLE + 64 abstract     2.9490    +86.5%
+    ^ ORACLE, state=LAST SEG only   2.7642   +105.8%
+=== 4b_nf4  09:44:35 ===
+    ^ same anchors, state=LAST SEG only   2.6980    +94.5%
+    ^ same anchors, NO state   3.1001    +54.1%
+  512 ORACLE + 64 abstract     2.5852   +105.8%
+    ^ ORACLE, state=LAST SEG only   2.5599   +108.3%
+=== done 09:53:51 ===

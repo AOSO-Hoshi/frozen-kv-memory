@@ -1,0 +1,42 @@
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 13960.66it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (1033748 > 131072). Running this sequence through the model will result in indexing errors
+
+10 samples x 5 depths | ctx=4096 | budget 576 entries (hybrid: 512 + 64)
+
+=== exact match by needle depth ===
+ depth        upper       lower    abstract   streaming         h2o      snapkv     anchors      hybrid      oracle
+  ------------------------------------------------------------------------------------------------------------------
+   0.1        100%          0%          0%          0%          0%          0%          0%          0%        100% 
+   0.3        100%          0%          0%          0%          0%          0%          0%          0%        100% 
+   0.5        100%          0%          0%          0%          0%          0%          0%          0%         90% 
+   0.7        100%          0%          0%          0%          0%          0%          0%          0%         80% 
+   0.9        100%          0%          0%        100%          0%         30%         70%         80%        100% 
+
+=== found any of the needle / fraction of it retrieved ===
+ depth        streaming             h2o          snapkv         anchors
+   0.1      0%/     0%    100%/    26%      0%/     0%     60%/     5% 
+   0.3      0%/     0%    100%/    18%     30%/    13%     70%/     8% 
+   0.5      0%/     0%     90%/    12%      0%/     0%      0%/     0% 
+   0.7      0%/     0%    100%/    13%     10%/     2%     40%/     3% 
+   0.9    100%/   100%     70%/     6%    100%/    70%    100%/    77% 
+
+=== fraction retrieved: key phrase / digits ===
+ depth        streaming             h2o          snapkv         anchors
+   0.1      0%/     0%     36%/     4%      0%/     0%      4%/     8% 
+   0.3      0%/     0%     27%/     0%     19%/     0%     12%/     0% 
+   0.5      0%/     0%     18%/     0%      0%/     0%      0%/     0% 
+   0.7      0%/     0%     19%/     0%      2%/     0%      5%/     0% 
+   0.9    100%/   100%      9%/     0%     81%/    44%     74%/    84% 
+
+=== overall (gap 2.520 nats, answer tokens only) ===
+  condition          CE   recovery     EM
+  ----------------------------------------
+  upper           0.011   +100.0%  100%
+  lower           2.532     +0.0%    0%
+  abstract        3.346    -32.3%    0%
+  streaming       2.159    +14.8%   20%
+  h2o             2.668     -5.4%    0%
+  snapkv          2.470     +2.4%    6%
+  anchors         2.188    +13.6%   14%
+  hybrid          2.213    +12.6%   16%
+  oracle          0.238    +91.0%   94%

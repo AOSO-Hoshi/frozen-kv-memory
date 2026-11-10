@@ -64,14 +64,26 @@ def main() -> None:
     ap.add_argument("--n", type=int, default=24)
     ap.add_argument("--ckpt", default=str(HERE / "ckpt" / "memtok_k32_deep_frozen.pt"))
     ap.add_argument("--model", default=str(HERE / "qwen3-0.6b"))
+    ap.add_argument("--load-4bit", action="store_true",
+                    help="NF4-quantise the frozen backbone; required for 4B on "
+                         "8GB, and must match how the module was trained")
     args = ap.parse_args()
 
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     dev = "cuda"
     tok = AutoTokenizer.from_pretrained(args.model)
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model, dtype=torch.bfloat16).to(dev).eval()
+    if args.load_4bit:
+        from transformers import BitsAndBytesConfig
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model, dtype=torch.bfloat16, device_map={"": 0},
+            quantization_config=BitsAndBytesConfig(
+                load_in_4bit=True, bnb_4bit_quant_type="nf4",
+                bnb_4bit_compute_dtype=torch.bfloat16,
+                bnb_4bit_use_double_quant=True)).eval()
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model, dtype=torch.bfloat16).to(dev).eval()
     cfg = model.config
 
     sd = torch.load(args.ckpt)

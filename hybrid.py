@@ -33,10 +33,11 @@ import torch.nn.functional as F
 
 from diagnose import per_token_ce
 from memory import kv_only
-from memtok import MemoryTokens, compress, _layers
+from memtok import MemoryTokens, compress, _layers, rope_q
 from train import load_chunks, seg_b_loss
 
 HERE = Path(__file__).resolve().parent
+
 
 
 def query_anchors(model, cfg, full, ctx_len: int, probe: torch.Tensor,
@@ -64,6 +65,8 @@ def query_anchors(model, cfg, full, ctx_len: int, probe: torch.Tensor,
     q = q.view(-1, cfg.num_attention_heads, hd)
     if hasattr(attn, "q_norm"):
         q = attn.q_norm(q)
+    q = rope_q(model, q, torch.arange(ctx_len, ctx_len + probe.shape[1],
+                                      device=probe.device))
     k = full[-1][0][0]                                     # [kv_heads, ctx, hd]
     rep = cfg.num_attention_heads // k.shape[0]
     k = k.repeat_interleave(rep, dim=0)
@@ -286,14 +289,29 @@ def main() -> None:
     ap.add_argument("--n", type=int, default=24)
     ap.add_argument("--ckpt", default=str(HERE / "ckpt" / "memtok_k32_deep_frozen.pt"))
     ap.add_argument("--model", default=str(HERE / "qwen3-0.6b"))
+    ap.add_argument("--load-4bit", action="store_true",
+                    help="NF4-quantise the frozen backbone. Required for 4B on "
+                         "8GB. The module must have been trained the same way: "
+                         "its slots sit in the quantised model's key space.")
     args = ap.parse_args()
 
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     dev = "cuda"
     tok = AutoTokenizer.from_pretrained(args.model)
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model, dtype=torch.bfloat16).to(dev).eval()
+    if args.load_4bit:
+        from transformers import BitsAndBytesConfig
+        # same configuration train_memtok.py uses, so the backbone the slots
+        # were trained against is the backbone they are evaluated against
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model, dtype=torch.bfloat16, device_map={"": 0},
+            quantization_config=BitsAndBytesConfig(
+                load_in_4bit=True, bnb_4bit_quant_type="nf4",
+                bnb_4bit_compute_dtype=torch.bfloat16,
+                bnb_4bit_use_double_quant=True)).eval()
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model, dtype=torch.bfloat16).to(dev).eval()
     cfg = model.config
 
     sd = torch.load(args.ckpt)
@@ -341,7 +359,7 @@ def main() -> None:
          "chunked_query", "surprisal_hybrid", "two_stage", "speculative",
          "spec_anchors_only", "spec_random_state",
          "last_seg_state",
-         "oracle_only", "oracle_hybrid"], 0.0)
+         "oracle_only", "oracle_hybrid", "oracle_last_seg"], 0.0)
     n_anchor = 0
     with torch.no_grad():
         for i in range(len(data)):
@@ -501,6 +519,14 @@ def main() -> None:
                     for (ak, av), (sk, sv) in zip(oanc, st)]
             row["oracle_hybrid"] = seg_b_loss(
                 model, cfg, tail, omix, cut + args.k).item()
+            # The missing cell: oracle anchors behind the last-segment state.
+            # With it the 2x2 (anchor source x state type) closes, so
+            # "what perfect selection is worth" and "what the state is worth"
+            # can each be read off holding the other fixed.
+            olmix = [(torch.cat([ak, sk], dim=2), torch.cat([av, sv], dim=2))
+                     for (ak, av), (sk, sv) in zip(oanc, st_last)]
+            row["oracle_last_seg"] = seg_b_loss(
+                model, cfg, tail, olmix, cut + args.k).item()
 
             # per-window rows feed the topic split; the totals still come from them
             for kk, vv in row.items():
@@ -533,7 +559,8 @@ def main() -> None:
                         ("spec_anchors_only", "  ^ same anchors, NO state"),
                         ("spec_random_state", "  ^ same anchors, RANDOM state"),
                         ("oracle_only", f"{args.anchors} ORACLE anchors only"),
-                        ("oracle_hybrid", f"{args.anchors} ORACLE + {args.k} abstract")):
+                        ("oracle_hybrid", f"{args.anchors} ORACLE + {args.k} abstract"),
+                        ("oracle_last_seg", "  ^ ORACLE, state=LAST SEG only")):
         ce = tot[name]
         print(f"  {label:<26} {ce:8.4f} {(tot['lower']-ce)/gap:+9.1%}")
     report_by_spread(per_window, spreads,
