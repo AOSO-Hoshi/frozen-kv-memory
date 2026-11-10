@@ -38,7 +38,7 @@ We also quantify two measurement hazards: fine-tuning the backbone improves the 
 
 ## Additional notes（替换 v2 的整段）
 
-Version 3 changes no result, table or figure. It gives the code a new address, https://source.hoshichan.moe/frozen-kv-memory/, because the repository that versions 1 and 2 link to is no longer reachable, and it rewrites the statement on the use of AI assistance, which in version 2 did not describe the division of work accurately.
+Version 3 changes no result, table or figure. It gives the code a new address, https://source.hoshichan.moe/frozen-kv-memory/, because the repository that versions 1 and 2 link to is no longer reachable, and it rewrites the statement on the use of AI assistance, which in version 2 did not describe the division of work accurately. It also corrects how the introduction and the related-work section describe Hu et al. (2024), who correlate per-token gains with n-gram recurrence rather than stratify tokens by it.
 
 Use of AI assistance: This paper was produced by the author working with AI assistants, and their part in it was large: Anthropic's Claude wrote most of the code, ran the experiments, analysed the results and drafted the text, and xAI's Grok carried out the literature search. The author set the direction, chose the experiments, reviewed the results and the text, and takes full responsibility for the paper.
 

@@ -103,7 +103,7 @@ adds a fixed-budget gain behind any selector, including the strongest
 training-free one we ran, while on the needle task it is dead weight and the
 outcome rests on whether the selector sees the question and may choose per
 attention head. To our knowledge this decomposition has not been reported for
-compressed context; the nearest work stratifies tokens by $n$-gram novelty in
+compressed context; the nearest work relates per-token gains to $n$-gram recurrence in
 \emph{uncompressed} long-context models \citep{tokensbenefit}, or contrasts
 topical against unexpected needles at the task level \citep{gistboundary}.
 
@@ -896,11 +896,11 @@ nats) are reported in that spirit---as a caution about which corpora can support
 this measurement at all---and not as a finding.
 
 \paragraph{Per-token analyses of long context.}
-Nearest to \S\ref{sec:copyability}, \citet{tokensbenefit} stratify token-level
-perplexity by how often an $n$-gram occurs in the added context and find that
-newly appearing material correlates with the benefit from a longer window, but
-they study \emph{uncompressed} long-context models, so the question of what
-compression specifically destroys does not arise. \citet{gistboundary} analyse
+Nearest to \S\ref{sec:copyability}, \citet{tokensbenefit} correlate the drop in
+token-level perplexity with how much more often the token's $n$-gram occurs once
+context is added, and find that tokens whose $n$-grams recur in the added context
+gain more from a longer window, but they study \emph{uncompressed} long-context
+models, so the question of what compression specifically destroys does not arise. \citet{gistboundary} analyse
 gist-based compression at finer grain than task accuracy and find unexpected
 information is lost preferentially---topically relevant word needles at 50.7
 against surprising ones at 35.8 under $8\times$ compression---which points the
@@ -1029,7 +1029,9 @@ missing) that the controlled sweep had already superseded.
 No result, table or figure has changed. Version 3 gives the code a new address,
 because the repository that versions 1 and 2 link to is no longer reachable, and
 it rewrites the statement on the use of AI assistance below, which in version 2
-did not describe the division of work accurately.
+did not describe the division of work accurately. It also corrects how the
+introduction and \S\ref{sec:related} describe \citet{tokensbenefit}, who correlate
+per-token gains with $n$-gram recurrence rather than stratify tokens by it.
 
 \section*{Use of AI assistance}
 
