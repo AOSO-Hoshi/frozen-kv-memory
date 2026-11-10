@@ -1,5 +1,10 @@
 # 论文
 
+**v3（2026-11-10）**：不改任何结果、表格和图。源码地址换成
+<https://source.hoshichan.moe/frozen-kv-memory/>（v1/v2 里印的 GitHub 仓库已经打不开），并重写文末的
+AI 协助声明（v2 那段没有如实描述分工）。改动见论文末尾 "Changes from version 2"。
+v2 源码留档为 `main.v2.tex`；Zenodo 新版本要填的内容在 `ZENODO-v3.md`。
+
 **v2 已发布（2026-09-23）**：DOI [10.5281/zenodo.22913648](https://doi.org/10.5281/zenodo.22913648)。
 修正 v1 的注意力打分 bug（手算注意力没给 query 加 RoPE）及其影响的全部结论，18 页。
 改动清单在论文末尾 "Changes from version 1"，数据在 `../out/v2/`、`../out/cloud_v2/`。
