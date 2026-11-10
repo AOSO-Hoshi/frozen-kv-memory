@@ -5,10 +5,12 @@
 > DOI [10.5281/zenodo.22897853](https://doi.org/10.5281/zenodo.22897853)（所有版本，恒指向最新；v1 有打分 bug，请看 v2）
 > （源码在 `paper/`，`pdflatex main && bibtex main && pdflatex main ×2` 可重建）
 >
-> **Repository moved.** The paper (v1/v2) links to `github.com/HoshiGT/frozen-kv-memory`,
-> which is no longer reachable. This repository,
-> `github.com/AOSO-Hoshi/frozen-kv-memory`, is the same code and experimental
-> record with its full history, and is now the canonical location.
+> **Where this lives.** The canonical home is
+> <https://source.hoshichan.moe/frozen-kv-memory/>
+> (`git clone https://source.hoshichan.moe/frozen-kv-memory.git`);
+> `github.com/AOSO-Hoshi/frozen-kv-memory` is a mirror. Versions 1 and 2 of the
+> paper link to `github.com/HoshiGT/frozen-kv-memory`, which is no longer
+> reachable; this is the same code and experimental record with its full history.
 
 > **In English** — Learned compression of a transformer's KV cache into a fixed
 > budget of memory slots, trained with the backbone completely frozen: the only
